@@ -1,0 +1,14 @@
+# AutoPermit AI — Backend Dependencies
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+python-multipart>=0.0.18
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+ultralytics>=8.3.0
+PyMuPDF>=1.25.0
+pytesseract>=0.3.10
+openai>=1.58.0
+Pillow>=11.0.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+aiofiles>=24.1.0
