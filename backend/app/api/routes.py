@@ -102,7 +102,7 @@ async def analyze_blueprint(request: AnalyzeRequest):
     3. PaddleOCR dimension extraction
     4. GPT-4o compliance analysis
     """
-    vision_service, ocr_service, compliance_service, storage_service = _get_services()
+    vision_service, ocr_service, compliance_service, storage_service, regulation_service = _get_services()
 
     file_info = _uploaded_files.get(request.file_id)
     if not file_info:
@@ -118,7 +118,7 @@ async def analyze_blueprint(request: AnalyzeRequest):
     try:
         # Step 1 & 2: PDF → Image → YOLOv8 Detection
         logger.info(f"[{report_id}] Starting vision pipeline...")
-        original_img, annotated_img, detections = vision_service.process_blueprint(
+        original_img, annotated_img, detections, image_path = vision_service.process_blueprint(
             pdf_path=pdf_path,
             output_dir=output_dir,
         )
@@ -130,10 +130,17 @@ async def analyze_blueprint(request: AnalyzeRequest):
 
         # Step 4: LLM Compliance Analysis
         logger.info(f"[{report_id}] Running compliance analysis...")
+        
+        # Build extra context from site_context if provided
+        site_info = ""
+        if request.site_context:
+            site_info = f"SITE CONTEXT: {request.site_context}\n\n"
+            
         raw_result = compliance_service.analyze(
             detections=detections,
             ocr_results=ocr_results,
-            ocr_formatted=ocr_formatted,
+            image_path=str(image_path),
+            extra_context=site_info + ocr_formatted
         )
 
         # Parse and validate compliance checks
@@ -177,7 +184,7 @@ async def analyze_blueprint(request: AnalyzeRequest):
 @router.get("/report/{report_id}", response_model=ComplianceReport, tags=["Reports"])
 async def get_report(report_id: str):
     """Retrieve a compliance report by ID."""
-    _, _, _, storage_service = _get_services()
+    _, _, _, storage_service, _ = _get_services()
 
     report = storage_service.get_report(report_id)
     if not report:
@@ -191,7 +198,7 @@ async def get_report(report_id: str):
 @router.get("/reports", response_model=list[ReportListItem], tags=["Reports"])
 async def list_reports():
     """List all compliance reports."""
-    _, _, _, storage_service = _get_services()
+    _, _, _, storage_service, _ = _get_services()
     return storage_service.list_reports()
 
 
@@ -225,3 +232,38 @@ async def search_regulations(request: RegulationSearchRequest):
     _, _, _, _, regulation_service = _get_services()
     results = regulation_service.search(query=request.query, limit=request.limit)
     return results
+
+
+@router.on_event("startup")
+async def startup_event():
+    """
+    Startup tasks:
+    1. Scan uploads directory to remember previously uploaded files.
+    2. Pre-load the demo blueprint.
+    """
+    upload_dir = Path(settings.UPLOAD_DIR)
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    
+    # 1. Scan for existing PDFs
+    count = 0
+    for pdf_file in upload_dir.glob("*.pdf"):
+        file_id = pdf_file.stem
+        # If it's a UUID or demo, track it
+        if len(file_id) >= 7:  # Basic check for file_id
+            _uploaded_files[file_id] = {
+                "filename": f"{file_id}.pdf",
+                "path": str(pdf_file),
+                "page_count": 1, # Placeholder, will be updated if re-opened
+            }
+            count += 1
+    
+    # 2. Specifically ensure demo-id is mapped
+    demo_path = upload_dir / "demo_blueprint.pdf"
+    if demo_path.exists():
+        _uploaded_files["demo-id"] = {
+            "filename": "demo_blueprint.pdf",
+            "path": str(demo_path),
+            "page_count": 1,
+        }
+    
+    logger.info(f"Startup complete: Tracked {count} existing uploads.")

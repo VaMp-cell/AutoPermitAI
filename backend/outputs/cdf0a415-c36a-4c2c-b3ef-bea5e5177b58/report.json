@@ -1,0 +1,22 @@
+{
+  "report_id": "cdf0a415-c36a-4c2c-b3ef-bea5e5177b58",
+  "filename": "Rock garden plan.pdf",
+  "created_at": "2026-05-10T20:10:46.262380",
+  "image_url": "/image/cdf0a415-c36a-4c2c-b3ef-bea5e5177b58",
+  "page_count": 1,
+  "detections": [],
+  "ocr_results": [],
+  "compliance_checks": [
+    {
+      "code_reference": "MOCK_CHECK",
+      "requirement": "Blueprint must be analyzed by AI",
+      "status": "WARNING",
+      "severity": "Minor",
+      "reasoning": "This is a placeholder report. The real-time AI was unable to process this request. Check your API keys.",
+      "detected_value": "N/A",
+      "required_value": "AI Analysis"
+    }
+  ],
+  "overall_status": "NEEDS_REVIEW",
+  "summary": "MOCK ANALYSIS: Extra data: line 187 column 1 (char 9240)"
+}

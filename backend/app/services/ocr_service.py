@@ -24,6 +24,11 @@ class OCRService:
         self._available = False
         try:
             import pytesseract
+            from app.config import settings
+            
+            if settings.TESSERACT_CMD:
+                pytesseract.pytesseract.tesseract_cmd = settings.TESSERACT_CMD
+                
             self._pytesseract = pytesseract
             self._available = True
             logger.info("pytesseract OCR initialized")

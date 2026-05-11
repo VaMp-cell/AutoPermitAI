@@ -62,10 +62,10 @@ async def lifespan(app: FastAPI):
         logger.error(f"✗ Failed to load YOLO model: {e}")
         logger.warning("  Vision detection will not be available")
 
-    # Initialize compliance (OpenAI) client
+    # Initialize compliance client
     compliance_service.initialize()
-    if compliance_service.client:
-        logger.info("✓ Compliance service ready (GPT-4o)")
+    if compliance_service.provider != "MOCK":
+        logger.info(f"✓ Compliance service ready ({compliance_service.provider})")
     else:
         logger.warning("✓ Compliance service in MOCK mode (no API key)")
 

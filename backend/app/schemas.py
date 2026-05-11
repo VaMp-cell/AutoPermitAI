@@ -89,6 +89,10 @@ class AnalyzeRequest(BaseModel):
     """Request body for the /analyze endpoint."""
 
     file_id: str
+    site_context: Optional[dict] = Field(
+        None, 
+        description="Optional site metadata, e.g. {'zone': 'S1', 'plot_area': 450, 'road_width': 10}"
+    )
 
 
 class ReportListItem(BaseModel):

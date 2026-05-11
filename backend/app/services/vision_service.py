@@ -208,7 +208,7 @@ class VisionService:
         pdf_path: str | Path,
         output_dir: str | Path,
         page_index: int = 0,
-    ) -> Tuple[Image.Image, Image.Image, List[DetectionBox]]:
+    ) -> Tuple[Image.Image, Image.Image, List[DetectionBox], Path]:
         """
         Full pipeline: PDF → Image → Detect → Render.
 
@@ -218,7 +218,7 @@ class VisionService:
             page_index: Which page to process (default: first page).
 
         Returns:
-            Tuple of (original_image, annotated_image, detections).
+            Tuple of (original_image, annotated_image, detections, original_path).
         """
         images = self.pdf_to_images(pdf_path)
         if page_index >= len(images):
@@ -238,4 +238,4 @@ class VisionService:
         annotated.save(str(annotated_path), quality=95)
 
         logger.info(f"Saved images to {output_dir}")
-        return image, annotated, detections
+        return image, annotated, detections, original_path

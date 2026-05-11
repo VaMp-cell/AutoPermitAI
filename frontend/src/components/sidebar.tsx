@@ -12,6 +12,7 @@ import {
   ChevronRight,
   Shield,
   Zap,
+  ScanSearch,
 } from "lucide-react";
 
 const navItems = [
@@ -60,6 +61,23 @@ export default function Sidebar() {
           </div>
         )}
       </div>
+
+      {/* Regulation Search */}
+      {!collapsed && (
+        <div className="px-4 py-4 border-b border-white/[0.08]">
+          <label className="text-[10px] text-muted-foreground uppercase font-bold mb-2 block px-1">
+            Knowledge Base
+          </label>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search regulations..."
+              className="w-full bg-white/[0.05] border border-white/10 rounded-lg pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            />
+            <ScanSearch className="absolute left-2.5 top-2 h-3.5 w-3.5 text-muted-foreground" />
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <nav className="flex-1 space-y-1 p-3">
@@ -115,7 +133,7 @@ export default function Sidebar() {
         {!collapsed && (
           <div className="rounded-lg bg-primary/[0.08] p-3 text-center">
             <p className="text-[10px] text-muted-foreground">
-              Powered by YOLOv8 + GPT-4o
+              Powered by YOLOv8 + Gemini 2.0
             </p>
           </div>
         )}

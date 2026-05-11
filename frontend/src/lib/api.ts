@@ -51,12 +51,16 @@ export async function uploadBlueprint(
 
 /** Run the full analysis pipeline on an uploaded file */
 export async function analyzeBlueprint(
-  fileId: string
+  fileId: string,
+  siteContext?: Record<string, any>
 ): Promise<ComplianceReport> {
   return apiFetch<ComplianceReport>("/analyze", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ file_id: fileId }),
+    body: JSON.stringify({ 
+      file_id: fileId,
+      site_context: siteContext 
+    }),
   });
 }
 

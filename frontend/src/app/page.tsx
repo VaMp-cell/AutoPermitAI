@@ -23,6 +23,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   Activity,
+  Settings,
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -31,6 +32,11 @@ export default function DashboardPage() {
   const [report, setReport] = useState<ComplianceReport | null>(null);
   const [reports, setReports] = useState<ReportListItem[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [siteContext, setSiteContext] = useState({
+    zone: "S1",
+    plot_area: 450,
+    road_width: 6,
+  });
 
   // Fetch existing reports on mount
   useEffect(() => {
@@ -70,7 +76,7 @@ export default function DashboardPage() {
         setProgress(80);
       }, 4500);
 
-      const result = await analyzeBlueprint(uploadRes.file_id);
+      const result = await analyzeBlueprint(uploadRes.file_id, siteContext);
 
       // Clear timers if analysis finishes quickly
       clearTimeout(stageTimer);
@@ -164,6 +170,54 @@ export default function DashboardPage() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Site Context Configuration */}
+      <div className="mb-6 glass-card rounded-2xl p-5 animate-fade-in">
+        <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+          <Settings className="h-4 w-4 text-primary" />
+          Site Configuration (Goa Municipal)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="text-[10px] text-muted-foreground uppercase font-bold mb-1.5 block">
+              Municipal Zone
+            </label>
+            <select
+              value={siteContext.zone}
+              onChange={(e) => setSiteContext({ ...siteContext, zone: e.target.value })}
+              className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            >
+              <option value="S1">S1 (Residential - Low Density)</option>
+              <option value="S2">S2 (Residential - Med Density)</option>
+              <option value="C1">C1 (Commercial)</option>
+              <option value="I1">I1 (Industrial)</option>
+              <option value="VP">VP (Village Panchayat)</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-[10px] text-muted-foreground uppercase font-bold mb-1.5 block">
+              Plot Area (sq.m)
+            </label>
+            <input
+              type="number"
+              value={siteContext.plot_area}
+              onChange={(e) => setSiteContext({ ...siteContext, plot_area: Number(e.target.value) })}
+              className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            />
+          </div>
+          <div>
+            <label className="text-[10px] text-muted-foreground uppercase font-bold mb-1.5 block">
+              Road Width (m)
+            </label>
+            <input
+              type="number"
+              value={siteContext.road_width}
+              onChange={(e) => setSiteContext({ ...siteContext, road_width: Number(e.target.value) })}
+              className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            />
+          </div>
+        </div>
       </div>
 
       {/* File Uploader */}
