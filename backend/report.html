@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AutoPermitAI Backend Settings Report</title>
+<style>
+  body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f0f4ff, #e0e7ff); margin:0; padding:0; color:#333;}
+  .container {max-width: 900px; margin: 2rem auto; background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); overflow:hidden;}
+  header {background: linear-gradient(90deg, #4a90e2, #007aff); color:white; padding:1.5rem; text-align:center;}
+  h1 {margin:0; font-size:1.8rem;}
+  table {width:100%; border-collapse:collapse; margin:1rem 0;}
+  th, td {padding:0.75rem 1rem; text-align:left;}
+  th {background:#f5f7ff; font-weight:600;}
+  tr:nth-child(even) {background:#f9fbff;}
+  .section {padding:1rem 2rem;}
+  .error {background:#ffe5e5; border-left:4px solid #e53e3e; padding:1rem; margin:1rem 2rem; border-radius:4px;}
+  footer {text-align:center; font-size:0.9rem; padding:1rem; color:#666;}
+  @media (max-width:600px) {header h1{font-size:1.4rem;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>AutoPermitAI Backend Settings Report</h1>
+  </header>
+  <section class="section">
+    <h2>Environment Variables</h2>
+    <table>
+      <tr><th>Variable</th><th>Value</th></tr>
+      <tr><td>OPENAI_API_KEY</td><td><em>REDACTED</em></td></tr>
+      <tr><td>GOOGLE_API_KEY</td><td><em>REDACTED</em></td></tr>
+      <tr><td>YOLO_MODEL_PATH</td><td>yolov8n.pt</td></tr>
+      <tr><td>UPLOAD_DIR</td><td>uploads</td></tr>
+      <tr><td>OUTPUT_DIR</td><td>outputs</td></tr>
+      <tr><td>SUPABASE_URL</td><td>(empty)</td></tr>
+      <tr><td>SUPABASE_KEY</td><td>(empty)</td></tr>
+      <tr><td>CORS_ORIGINS</td><td>http://localhost:3000</td></tr>
+      <tr><td>HOST</td><td>0.0.0.0</td></tr>
+      <tr><td>PORT</td><td>8000</td></tr>
+      <tr><td>TESSERACT_CMD</td><td>(empty)</td></tr>
+    </table>
+  </section>
+  <section class="section">
+    <h2>Recent Error (HTTP 500)</h2>
+    <div class="error">
+      <strong>Trajectory ID:</strong> 66f64bf6-165d-4785-9529-82cb9cadf4b6<br>
+      <strong>Trace ID:</strong> 0x970cbd9452d9b13b<br>
+      <strong>Message:</strong> Internal error encountered.<br>
+      <strong>Status:</strong> INTERNAL<br>
+      <strong>Timestamp (GMT):</strong> Mon, 11 May 2026 14:42:42 GMT<br>
+    </div>
+    <p>Suggested checks:</p>
+    <ul>
+      <li>Ensure all required environment variables are set and not empty.</li>
+      <li>Verify <code>GOOGLE_API_KEY</code> and <code>OPENAI_API_KEY</code> have proper permissions.</li>
+      <li>Check backend logs (<code>backend/logs/</code> if present) for stack traces.</li>
+      <li>Confirm the YOLO model file exists at the path specified.</li>
+      <li>Validate that any external services (Supabase, Tesseract) are reachable.</li>
+    </ul>
+  </section>
+  <footer>
+    Generated on {{DATE}} by AutoPermitAI reporting tool.
+  </footer>
+</div>
+</body>
+</html>

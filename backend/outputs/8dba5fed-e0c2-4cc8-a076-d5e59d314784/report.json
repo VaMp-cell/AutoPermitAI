@@ -1,0 +1,22 @@
+{
+  "report_id": "8dba5fed-e0c2-4cc8-a076-d5e59d314784",
+  "filename": "Rock garden plan.pdf",
+  "created_at": "2026-05-11T14:13:46.372404",
+  "image_url": "/image/8dba5fed-e0c2-4cc8-a076-d5e59d314784",
+  "page_count": 1,
+  "detections": [],
+  "ocr_results": [],
+  "compliance_checks": [
+    {
+      "code_reference": "MOCK_CHECK",
+      "requirement": "Blueprint must be analyzed by AI",
+      "status": "WARNING",
+      "severity": "Minor",
+      "reasoning": "This is a placeholder report. The real-time AI was unable to process this request. Check your API keys.",
+      "detected_value": "N/A",
+      "required_value": "AI Analysis"
+    }
+  ],
+  "overall_status": "NEEDS_REVIEW",
+  "summary": "MOCK ANALYSIS: No API key found. Using template based on Goa 2010 rules."
+}

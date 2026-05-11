@@ -266,10 +266,18 @@ export default function DashboardPage() {
 
           {/* Compliance Checklist */}
           <div className="glass-card rounded-2xl p-5">
-            <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-primary" />
-              Compliance Report
-            </h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary" />
+                Compliance Report
+              </h2>
+              <button 
+                onClick={() => setStage("idle")}
+                className="text-[10px] font-bold uppercase tracking-wider text-primary hover:underline"
+              >
+                New Analysis
+              </button>
+            </div>
             <ComplianceChecklist
               checks={report.compliance_checks}
               overallStatus={report.overall_status}

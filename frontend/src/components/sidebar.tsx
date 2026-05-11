@@ -22,6 +22,11 @@ const navItems = [
     icon: LayoutDashboard,
   },
   {
+    label: "New Analysis",
+    href: "/",
+    icon: ScanSearch,
+  },
+  {
     label: "Reports",
     href: "/reports",
     icon: FileText,

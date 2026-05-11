@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AutoPermitAI Compliance Report</title>
+<style>
+  body {font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f6ff; margin:0; padding:0; color:#222;}
+  .container {max-width: 900px; margin:2rem auto; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.07); overflow:hidden;}
+  header {background:linear-gradient(90deg,#4a90e2,#007aff); color:#fff; padding:1.5rem; text-align:center;}
+  h1 {margin:0; font-size:1.8rem;}
+  section {padding:1rem 2rem;}
+  h2 {border-bottom:2px solid #e0e7ff; padding-bottom:0.4rem; color:#333;}
+  .summary {display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;}
+  .box {flex:1 1 150px; background:#f0f4ff; border-radius:8px; padding:0.8rem; text-align:center;}
+  .box.pass {border-left:4px solid #38a169;}
+  .box.fail {border-left:4px solid #e53e3e;}
+  .box.warn {border-left:4px solid #dd6b20;}
+  .placeholder {background:#ffe5e5; border-left:4px solid #e53e3e; padding:1rem; margin-top:1rem; border-radius:4px;}
+  footer {text-align:center; font-size:0.9rem; color:#666; padding:1rem;}
+  @media(max-width:600px){header h1{font-size:1.4rem;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header><h1>Compliance Report – Needs Review</h1></header>
+  <section>
+    <h2>Mock Analysis Summary</h2>
+    <div class="summary">
+      <div class="box pass"><strong>Passed</strong><br>0</div>
+      <div class="box fail"><strong>Failed</strong><br>1</div>
+      <div class="box warn"><strong>Warnings</strong><br>1</div>
+    </div>
+    <p><strong>Extra data:</strong> line 187 column 1 (char 9240)</p>
+    <p><em>Blueprint must be analyzed by AI</em></p>
+    <div class="placeholder">
+      <strong>Placeholder Report</strong><br>
+      The real‑time AI was unable to process this request. Check your API keys.
+    </div>
+  </section>
+  <section>
+    <h2>Detected Issues</h2>
+    <ul>
+      <li>Missing or invalid <code>OPENAI_API_KEY</code> / <code>GOOGLE_API_KEY</code>.</li>
+      <li>AI analysis endpoint unreachable – likely network or credential problem.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Recommended Actions</h2>
+    <ol>
+      <li>Open <code>.env</code> and ensure <code>OPENAI_API_KEY</code> and <code>GOOGLE_API_KEY</code> are set to valid keys.</li>
+      <li>Restart the backend server after saving the updated <code>.env</code> file.</li>
+      <li>Verify internet connectivity from the machine hosting the backend.</li>
+      <li>If using a proxy/VPN, ensure it allows outbound HTTPS traffic to the AI provider.</li>
+    </ol>
+  </section>
+  <footer>Generated on {{DATE}} by AutoPermitAI reporting tool.</footer>
+</div>
+</body>
+</html>

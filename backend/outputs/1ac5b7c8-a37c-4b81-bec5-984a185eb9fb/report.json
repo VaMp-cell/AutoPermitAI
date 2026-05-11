@@ -1,0 +1,166 @@
+{
+  "report_id": "1ac5b7c8-a37c-4b81-bec5-984a185eb9fb",
+  "filename": "Rock garden plan.pdf",
+  "created_at": "2026-05-11T17:45:39.491650",
+  "image_url": "/image/1ac5b7c8-a37c-4b81-bec5-984a185eb9fb",
+  "page_count": 1,
+  "detections": [],
+  "ocr_results": [],
+  "compliance_checks": [
+    {
+      "code_reference": "Goa 2010 Reg Table III & IV",
+      "requirement": "Minimum Front Setback for Residential S1 zone (Road width 6.0m)",
+      "status": "PASS",
+      "severity": "Critical",
+      "reasoning": "The blueprint's 'Setbacks and Heights' table indicates a front setback of 5.30 m from the center of the road. This exceeds the minimum requirement of 3.00 m for Residential S1 zones.",
+      "detected_value": "5.30 m",
+      "required_value": "3.00 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table III & IV",
+      "requirement": "Minimum Side and Rear Setbacks for plots > 500 sq.m",
+      "status": "FAIL",
+      "severity": "Critical",
+      "reasoning": "While the prompt context states a 450 sq.m plot, the blueprint 'Area Statement' (Item 01) explicitly declares a plot area of 1171.00 sq.m. For plots > 500 sq.m, the minimum side/rear setback is 3.00 m. The drawing shows side setbacks of only 1.50 m.",
+      "detected_value": "1.50 m",
+      "required_value": "3.00 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table V",
+      "requirement": "Maximum Floor Area Ratio (F.A.R.) for Residential S1 Zone",
+      "status": "PASS",
+      "severity": "Critical",
+      "reasoning": "The total floor area for FAR calculation is 1136.77 sq.m against a plot area of 1171.00 sq.m, resulting in an FAR of 97.07, which is within the limit of 100 for S1 zones.",
+      "detected_value": "97.07",
+      "required_value": "100.00"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table V",
+      "requirement": "Maximum Permissible Ground Coverage for Residential S1 Zone",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "The proposed coverage is 385.00 sq.m on a 1171.00 sq.m plot, resulting in 32.88% coverage, which is well below the 50% maximum limit.",
+      "detected_value": "32.88%",
+      "required_value": "50.00%"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table V",
+      "requirement": "Maximum Permissible Building Height for Residential S1 Zone",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "The maximum building height shown in 'Section AA' for Block B is 11.50 m, which aligns exactly with the maximum permissible height for S1 zones.",
+      "detected_value": "11.50 m",
+      "required_value": "11.50 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.1 / NBC Part 3",
+      "requirement": "Minimum Habitable Room Area and Width",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "Typical bedrooms are shown as 3.13 m x 3.72 m, totaling 11.64 sq.m with a width of 3.13 m. This exceeds the minimum requirement of 9.5 sq.m and 2.4 m width.",
+      "detected_value": "11.64 sq.m",
+      "required_value": "9.5 sq.m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.1.2",
+      "requirement": "Minimum Kitchen Area and Width",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The kitchen dimensions are 3.13 m x 3.72 m (11.64 sq.m), exceeding the minimum of 5.0 sq.m area and 1.8 m width.",
+      "detected_value": "11.64 sq.m",
+      "required_value": "5.0 sq.m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.2",
+      "requirement": "Minimum Ceiling Height for Habitable Rooms",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "Section AA shows a floor-to-ceiling height (clear) of 3.00 m, which is above the mandatory 2.75 m.",
+      "detected_value": "3.00 m",
+      "required_value": "2.75 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.7 / NBC Part 4",
+      "requirement": "Staircase Tread and Riser Dimensions",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "The 'Section AA' detail for the staircase shows a tread of 0.28 m and a riser of 0.16 m. Both are within the safe limits for residential/commercial mixed use.",
+      "detected_value": "T:28cm, R:16cm",
+      "required_value": "T:min 25cm, R:max 17.5cm"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.21",
+      "requirement": "Mandatory Sloping Roof in Residential Zones",
+      "status": "WARNING",
+      "severity": "Major",
+      "reasoning": "The 'Roof Plan' shows significant portions of the building labeled as 'FLAT ROOF'. In Goa, residential buildings are required to have a sloping roof over at least 50% of the total covered area. Visual inspection suggests flat roof coverage may exceed 50%.",
+      "detected_value": "Approx 50% Flat",
+      "required_value": "Min 50% Sloping"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Chapter 14",
+      "requirement": "Parking Requirements for Residential (1 per 100sqm) and Commercial (1 per 50sqm)",
+      "status": "FAIL",
+      "severity": "Critical",
+      "reasoning": "The FAR area is 1136.77 sq.m. For mixed-use, this requires approx. 12-15 parking slots. The 'Stilt Floor Plan' shows only 6 designated parking bays. There is a significant shortfall in required parking infrastructure.",
+      "detected_value": "6 Bays",
+      "required_value": "~12-15 Bays"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.16",
+      "requirement": "Minimum Window Area (1/10th of floor area)",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "Habitable rooms (11.64 sqm) feature windows (W: 1.50x1.20 = 1.8 sqm). 1.8/11.64 is ~15%, which satisfies the 10% light/ventilation rule.",
+      "detected_value": "15.4%",
+      "required_value": "10.0%"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 15.1",
+      "requirement": "Fire Safety: Requirement for Lift",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "A lift is mandatory only for buildings exceeding 15.00 m in height. Since the maximum height is 11.50 m, the absence of a lift is compliant.",
+      "detected_value": "11.50 m height",
+      "required_value": "N/A under 15m"
+    },
+    {
+      "code_reference": "Goa 2010 Annexure VI",
+      "requirement": "Basement/Stilt usage and height restrictions",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The stilt floor is correctly used for parking and services. The height of the stilt area is shown as 2.60 m in section, complying with the requirement for service floors.",
+      "detected_value": "2.60 m",
+      "required_value": "Max 3.50 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.5",
+      "requirement": "Bathrooms and WC Minimum Dimensions",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The WC is shown as 1.40 m x 1.10 m (1.54 sq.m) and Toilet as 1.38 m x 2.02 m (2.78 sq.m), both meeting minimum Goa standards.",
+      "detected_value": "1.54 sq.m / 2.78 sq.m",
+      "required_value": "1.1 sq.m / 1.8 sq.m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Chapter 18",
+      "requirement": "Compound Wall and Gate Height",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The 'Elevation of Compound Wall' shows a 1.50 m solid wall with additional light railing. This complies with the maximum height of 1.5 m for solid obstruction from road level.",
+      "detected_value": "1.50 m",
+      "required_value": "1.50 m"
+    },
+    {
+      "code_reference": "CRZ Notification 2011/2019",
+      "requirement": "Coastal Regulation Zone Clearance",
+      "status": "NOT_FOUND",
+      "severity": "Critical",
+      "reasoning": "As the site is in Panaji (Panjim), it is highly likely to fall under CRZ III or II. No GCZMA clearance or CRZ boundary line is marked on the site plan.",
+      "detected_value": null,
+      "required_value": "GCZMA Clearance"
+    }
+  ],
+  "overall_status": "REJECTED",
+  "summary": "The proposal is REJECTED due to a critical discrepancy between the plot area on the drawing (1171 sqm) and the provided setbacks (1.5m), which require a 3m minimum for plots of this size. Furthermore, the parking provision (6 bays) is insufficient for the total FAR (1136 sqm), and the roof pattern likely exceeds the 50% flat-roof limit for residential zones in Panjim. CRZ clearance must also be evidenced given the location."
+}

@@ -58,6 +58,8 @@ export default function FileUploader({
       if (file) {
         setSelectedFile(file);
         onFileSelected(file);
+        // Reset value so the same file can be selected again if needed
+        e.target.value = "";
       }
     },
     [onFileSelected]
@@ -76,11 +78,15 @@ export default function FileUploader({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => stage === "idle" && inputRef.current?.click()}
+        onClick={() => {
+          if (["idle", "complete", "error"].includes(stage)) {
+            inputRef.current?.click();
+          }
+        }}
         className={cn(
           "glass-card relative cursor-pointer overflow-hidden rounded-2xl p-8 transition-all duration-300",
           isDragging && "border-primary/50 bg-primary/[0.06] scale-[1.01]",
-          stage === "idle" && !isDragging && "hover:border-white/[0.15] hover:bg-white/[0.05]",
+          (stage === "idle" || stage === "complete" || stage === "error") && !isDragging && "hover:border-white/[0.15] hover:bg-white/[0.05]",
           isProcessing && "cursor-default",
           stage === "complete" && "border-emerald-500/30 bg-emerald-500/[0.05]",
           stage === "error" && "border-rose-500/30 bg-rose-500/[0.05]"

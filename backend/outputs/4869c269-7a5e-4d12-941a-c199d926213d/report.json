@@ -1,0 +1,148 @@
+{
+  "report_id": "4869c269-7a5e-4d12-941a-c199d926213d",
+  "filename": "Rock garden plan.pdf",
+  "created_at": "2026-05-11T16:26:27.534965",
+  "image_url": "/image/4869c269-7a5e-4d12-941a-c199d926213d",
+  "page_count": 1,
+  "detections": [],
+  "ocr_results": [],
+  "compliance_checks": [
+    {
+      "code_reference": "Goa 2010 Reg Table V (S1 Zone)",
+      "requirement": "Maximum Floor Area Ratio (F.A.R.) for Residential S1 zone is 100.",
+      "status": "FAIL",
+      "severity": "Critical",
+      "reasoning": "The Area Statement in the drawing shows a total proposed FAR area of 1653.10 sq.m on a plot of 1171.00 sq.m. This results in an FAR of approximately 141.17, which significantly exceeds the permissible limit of 100 for S1 zones.",
+      "detected_value": "141.17",
+      "required_value": "100.00"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table V (S1 Zone)",
+      "requirement": "Maximum Ground Coverage for Residential S1 zone is 50%.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The total area of the building at ground level is 385.50 sq.m against a plot area of 1171.00 sq.m, resulting in 32.88% coverage.",
+      "detected_value": "32.88%",
+      "required_value": "50% (max)"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table IV",
+      "requirement": "Front setback for Residential buildings on plots > 500 sq.m must be 3.00 m (standard) or as per road width.",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "The drawing indicates a front setback of 5.30 m from the road boundary, which exceeds the minimum requirement.",
+      "detected_value": "5.30 m",
+      "required_value": "3.00 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table IV",
+      "requirement": "Side and Rear setbacks for plots > 500 sq.m in S1 zone must be minimum 3.00 m.",
+      "status": "FAIL",
+      "severity": "Major",
+      "reasoning": "The site plan and typical floor plans show side setbacks of 1.50 m in several sections. For a plot of 1171 sq.m, the minimum side setback should be 3.00 m.",
+      "detected_value": "1.50 m",
+      "required_value": "3.00 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.1.1",
+      "requirement": "Minimum area of a habitable room (Bedroom) must be 9.5 sq.m with a min width of 2.4 m.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "Typical bedrooms are shown as 3.13 m x 3.72 m, totaling 11.64 sq.m.",
+      "detected_value": "11.64 sq.m",
+      "required_value": "9.5 sq.m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.2",
+      "requirement": "Minimum area of a kitchen must be 5.0 sq.m with a min width of 1.8 m.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "Kitchen dimensions are 2.02 m x 2.72 m, totaling 5.49 sq.m.",
+      "detected_value": "5.49 sq.m",
+      "required_value": "5.0 sq.m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.1.2",
+      "requirement": "Minimum height of habitable rooms must be 2.75 m.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "Section AA and BB show a clear floor-to-ceiling height of 3.00 m for habitable floors.",
+      "detected_value": "3.00 m",
+      "required_value": "2.75 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Table V / Height restrictions",
+      "requirement": "Maximum permissible building height for S1 zone is 11.50 m.",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "Block B elevation shows a total height of 11.50 m from ground level to the terrace slab/ridge.",
+      "detected_value": "11.50 m",
+      "required_value": "11.50 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 14.1 / NBC Part 4",
+      "requirement": "Staircase riser maximum 17.5 cm and tread minimum 27 cm.",
+      "status": "PASS",
+      "severity": "Major",
+      "reasoning": "Section AA indicates a Riser (R) of 0.16 m (16 cm) and Tread (T) of 0.28 m (28 cm).",
+      "detected_value": "16cm / 28cm",
+      "required_value": "max 17.5cm / min 27cm"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 11.1 / Annexure IX",
+      "requirement": "Stilt height for parking purposes: Minimum 2.4 m.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The stilt floor height is shown as 2.60 m in the section drawings.",
+      "detected_value": "2.60 m",
+      "required_value": "2.40 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Chapter 16 / Fire Safety",
+      "requirement": "Minimum road width for fire engine access to buildings.",
+      "status": "WARNING",
+      "severity": "Major",
+      "reasoning": "The road width is 6.00 m. While sufficient for the building height, the 1.5m side setbacks restrict fire tender movement to the rear of the plot.",
+      "detected_value": "6.00 m road / 1.5m side",
+      "required_value": "6.00 m access path"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 13.7",
+      "requirement": "Mandatory sloping roof for at least 50% of the covered area in residential zones.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The Roof Plan and Elevations show a combination of flat and sloping roofs (Mangalore tiles style). Visually, the sloping portion appears to meet the 50% threshold.",
+      "detected_value": "Sloping roof present",
+      "required_value": "50% minimum"
+    },
+    {
+      "code_reference": "Goa 2010 Reg 21.1 / Rainwater Harvesting",
+      "requirement": "Rainwater harvesting mandatory for plots > 2000 sq.m (standard) but often required by local Panjim bylaws for smaller multi-dwelling units.",
+      "status": "NOT_FOUND",
+      "severity": "Minor",
+      "reasoning": "No specific RWH pit or collection system is detailed on the site plan.",
+      "detected_value": null,
+      "required_value": "RWH Pit details"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Annexure VI / Compound Wall",
+      "requirement": "Maximum height of compound wall is 1.50 m.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The 'Elevation of Compound Wall' shows a height of 1.50 m from the ground level.",
+      "detected_value": "1.50 m",
+      "required_value": "1.50 m"
+    },
+    {
+      "code_reference": "Goa 2010 Reg Chapter 13 / Ventilation",
+      "requirement": "Window area should be at least 1/10th of floor area.",
+      "status": "PASS",
+      "severity": "Minor",
+      "reasoning": "The schedule of openings shows windows (W: 1.50 x 1.20) for bedrooms (11.64 sqm). Window area 1.8 sqm is ~15% of floor area.",
+      "detected_value": "15%",
+      "required_value": "10%"
+    }
+  ],
+  "overall_status": "REJECTED",
+  "summary": "The building plan is rejected primarily due to a critical violation of the Floor Area Ratio (FAR), which at 141.17 exceeds the S1 zone limit of 100. Additionally, the side setbacks are inadequate (1.5m provided vs 3.0m required for a plot > 500sqm). While the height and internal room dimensions comply with Goa 2010 Regulations, the density and footprint violations are significant and mandate a significant redesign."
+}
