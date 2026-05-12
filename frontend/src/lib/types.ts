@@ -36,6 +36,12 @@ export interface ComplianceCheck {
   reasoning: string;
   detected_value: string | null;
   required_value: string | null;
+  fault_location: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null;
 }
 
 export interface ComplianceReport {

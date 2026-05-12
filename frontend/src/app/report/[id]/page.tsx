@@ -108,7 +108,18 @@ export default function ReportPage() {
             </div>
           </div>
 
-          <button className="flex items-center gap-2 rounded-lg bg-primary/15 px-4 py-2 text-xs font-medium text-primary hover:bg-primary/25 transition-colors">
+          <button 
+            onClick={() => {
+              const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(report, null, 2));
+              const downloadAnchorNode = document.createElement('a');
+              downloadAnchorNode.setAttribute("href",     dataStr);
+              downloadAnchorNode.setAttribute("download", `report_${report.report_id}.json`);
+              document.body.appendChild(downloadAnchorNode); 
+              downloadAnchorNode.click();
+              downloadAnchorNode.remove();
+            }}
+            className="flex items-center gap-2 rounded-lg bg-primary/15 px-4 py-2 text-xs font-medium text-primary hover:bg-primary/25 transition-colors"
+          >
             <Download className="h-3.5 w-3.5" />
             Export Report
           </button>

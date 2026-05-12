@@ -54,6 +54,10 @@ class ComplianceCheck(BaseModel):
     reasoning: str = Field(..., description="LLM chain-of-thought explanation")
     detected_value: Optional[str] = Field(None, description="What was found on the blueprint")
     required_value: Optional[str] = Field(None, description="What the code requires")
+    fault_location: Optional[dict] = Field(
+        None, 
+        description="Coordinates of the fault area if applicable, e.g. {'x': 0.5, 'y': 0.5, 'width': 0.1, 'height': 0.1}"
+    )
 
 
 class ComplianceReport(BaseModel):

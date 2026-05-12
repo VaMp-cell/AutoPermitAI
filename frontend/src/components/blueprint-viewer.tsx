@@ -27,12 +27,14 @@ const DEFAULT_COLOR = "#6366f1";
 interface BlueprintViewerProps {
   imageUrl: string;
   detections: DetectionBox[];
+  highlightedArea?: { x: number; y: number; width: number; height: number } | null;
   className?: string;
 }
 
 export default function BlueprintViewer({
   imageUrl,
   detections,
+  highlightedArea,
   className,
 }: BlueprintViewerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -126,12 +128,56 @@ export default function BlueprintViewer({
       ctx.fillText(label, x1 + 5, labelY + 13);
     });
 
+    // Draw active fault highlight
+    if (highlightedArea) {
+      const imgW = displayWidth / scale;
+      const imgH = displayHeight / scale;
+      
+      const cx = highlightedArea.x * imgW;
+      const cy = highlightedArea.y * imgH;
+      const bw = highlightedArea.width * imgW;
+      const bh = highlightedArea.height * imgH;
+      const x1 = cx - bw / 2;
+      const y1 = cy - bh / 2;
+
+      // Pulse effect
+      const pulse = (Math.sin(Date.now() / 200) + 1) / 2;
+      
+      ctx.strokeStyle = `rgba(239, 68, 68, ${0.5 + pulse * 0.5})`;
+      ctx.lineWidth = 4;
+      ctx.setLineDash([8, 4]);
+      ctx.strokeRect(x1, y1, bw, bh);
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = `rgba(239, 68, 68, ${0.1 + pulse * 0.15})`;
+      ctx.fillRect(x1, y1, bw, bh);
+
+      // Fault Label
+      ctx.fillStyle = "#ef4444";
+      ctx.font = "bold 12px Inter, system-ui, sans-serif";
+      ctx.fillText("FAULT AREA", x1, Math.max(y1 - 8, 12));
+    }
+
     ctx.restore();
-  }, [image, detections, scale, hoveredBox]);
+  }, [image, detections, scale, hoveredBox, highlightedArea]);
 
   useEffect(() => {
     draw();
   }, [draw]);
+
+  // Animation loop for pulse effect
+  useEffect(() => {
+    if (!highlightedArea) return;
+    
+    let frameId: number;
+    const animate = () => {
+      draw();
+      frameId = requestAnimationFrame(animate);
+    };
+    
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, [draw, highlightedArea]);
 
   // Resize observer
   useEffect(() => {

@@ -153,7 +153,13 @@ You MUST respond with a valid JSON object matching this exact structure:
       "severity": "Critical | Major | Minor",
       "reasoning": "Detailed explanation of your analysis and how you reached this conclusion based on the blueprint data",
       "detected_value": "What was found on the blueprint (or null)",
-      "required_value": "What the regulation requires (or null)"
+      "required_value": "What the regulation requires (or null)",
+      "fault_location": {
+        "x": 0.5,
+        "y": 0.5,
+        "width": 0.1,
+        "height": 0.1
+      }
     }
   ],
   "overall_status": "APPROVED | REJECTED | NEEDS_REVIEW",
@@ -169,6 +175,7 @@ You MUST respond with a valid JSON object matching this exact structure:
 - Flag "Roof Pattern" violations in residential zones if >50% is flat.
 - Always cite the specific Goa 2010 Regulation or NBC section.
 - Flag any CRZ or Conservation concerns as they are critical in Goa.
+- For every FAIL or WARNING status, you MUST provide a 'fault_location' with normalized coordinates (0.0 to 1.0) pointing to the specific area on the blueprint where the violation occurs.
 
 """
 

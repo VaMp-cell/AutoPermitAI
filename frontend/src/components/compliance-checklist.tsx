@@ -18,6 +18,7 @@ interface ComplianceChecklistProps {
   checks: ComplianceCheck[];
   overallStatus: OverallStatus;
   summary: string;
+  onCheckSelected?: (check: ComplianceCheck | null) => void;
 }
 
 const statusIcons = {
